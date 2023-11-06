@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<HTML>
+<link rel="stylesheet"  type="text/css" href="{{url_for('.static', filename='mainpage.css')}}">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<head>
+    <title>Brian's Web Security Assignment</title>
+</head>
+<body>
+    <center><h1>Welcome to Brian's Web Security Assignment!</h1></center>
+    <p1>Please enter your name, username, and password in the provided fields and then click submit.</p1><br></br>
+    <p2>The HTML and Python was written by Brian Baggs using online resources as help.</p2>
+</BODY>
+<form action="/signup"  name="register" method="POST">
+    <H1>Enter your details </H1> <br>
+    <p3><b>Name:</b>&emsp;&emsp;&emsp;&emsp;<input type="text" name="name" id="name" class="css-input" required /> <br><br>
+    <b>User Name:</b>&emsp;&nbsp;&nbsp;&nbsp;<input type="text" name="user_name" id="username" class="css-input" required /> <br><br>
+	<b>Password:</b>&emsp;&emsp;&nbsp;<input type="password" name="password" id="pass_word" class="css-input" required /> <br><br>
+&emsp;&emsp;&emsp;&emsp;&emsp;<input type="submit" class="css-btn" onclick="validate_form()" />&emsp;<input type="reset" value="Clear" class="css-btn" />
+</form>
+</HTML>
+<script type="text/javascript">
+function validate_form(){
+    let name = document.getElementById('name').value
+	let username = document.getElementById('username').value
+    let password = document.getElementById('pass_word').value
+    if(name == '' && username == '' && password == ''){
+	 return fetch('/empty')
+	  .then((response) => response.json())
+	  .then((responseJson) => {
+		console.log(responseJson)
+		//location.href = "http://localhost:5000/empty.html";
+		return(false)
+		})
+	}
+	else return;
+	return;
+}
+</script>
+
